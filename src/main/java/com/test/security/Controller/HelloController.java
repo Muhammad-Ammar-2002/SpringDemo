@@ -11,14 +11,11 @@ import java.net.http.HttpRequest;
 @RequestMapping
 public class HelloController {
 
-    @GetMapping("/hello")
-    public String sayHello(HttpServletRequest request) {
+    @GetMapping
+    public String sayHello() {
 
-        return "Hello, World!\n Session ID: " + request.getSession().getId();
+        return "Hello, World! " ;
     }
 
-    @GetMapping("/about")
-    public String about(HttpServletRequest request) {
-        return "This is a Spring Boot REST API application 2025 \n Session ID: " + request.getSession().getId();
-    }
+
 }
