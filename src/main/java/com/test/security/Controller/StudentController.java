@@ -1,35 +1,49 @@
 package com.test.security.Controller;
 
-import com.test.security.Student.Student;
-import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.security.web.csrf.CsrfToken;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.test.security.Model.CreateStudent;
+import com.test.security.Model.StudentDTO;
+import com.test.security.Service.StudentServiceInterface;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
+
 @RestController
+@RequestMapping("/students")
 public class StudentController {
 
-    List<Student> students=new ArrayList<>(List.of(
-            new Student(1,"Navin","Java"),
-            new Student(2,"Kiran","Blockchain")
-    ));
+    @Autowired
+    private StudentServiceInterface studentService;
 
-    @GetMapping("students")
-    public List<Student> getStudents(){
-        return students;
+    // Create a new student
+    @PostMapping
+    public StudentDTO createStudent(@RequestBody CreateStudent student) {
+        return studentService.saveStudent(student);
     }
-    @PostMapping("students")
-    public void addStudent(@RequestBody Student student) {
-        students.add(student);
+
+    // Get all students
+    @GetMapping
+    public List<StudentDTO> getAllStudents() {
+        return studentService.getAllStudents();
     }
-   @GetMapping("csrf-token")
-    public CsrfToken getToken(HttpServletRequest request)
-   {
-       return (CsrfToken) request.getAttribute("_csrf");
-   }
+
+    // Get a student by ID
+    @GetMapping("/{id}")
+    public StudentDTO getStudentById(@PathVariable Integer id) {
+        return studentService.getStudentById(id);
+    }
+
+    // Update a student
+    @PutMapping("/{id}")
+    public StudentDTO updateStudent(@PathVariable Integer id, @RequestBody StudentDTO student) {
+        return studentService.updateStudent(id, student);
+    }
+
+    // Delete a student
+    @DeleteMapping("/{id}")
+    public void deleteStudent(@PathVariable Integer id) {
+        studentService.deleteStudent(id);
+    }
 }
+
