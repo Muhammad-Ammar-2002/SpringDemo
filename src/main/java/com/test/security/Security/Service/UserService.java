@@ -1,9 +1,8 @@
-package com.test.security.Service;
+package com.test.security.Security.Service;
 
-import com.test.security.Model.User;
-import com.test.security.Repository.UserRepo;
+import com.test.security.Security.Model.User;
+import com.test.security.Security.Repository.UserRepo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 

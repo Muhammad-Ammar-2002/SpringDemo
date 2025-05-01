@@ -1,8 +1,7 @@
-package com.test.security.Controller;
+package com.test.security.Security.Controller;
 
-import com.test.security.Model.User;
-import com.test.security.Service.UserServiceInterface;
-import lombok.RequiredArgsConstructor;
+import com.test.security.Security.Model.User;
+import com.test.security.Security.Service.UserServiceInterface;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
