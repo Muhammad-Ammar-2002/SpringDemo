@@ -1,7 +1,9 @@
 package com.test.security.Controller;
 
+import com.test.security.Exceptions.CustomResponse;
 import com.test.security.Student.Student;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,16 +22,19 @@ public class StudentController {
     ));
 
     @GetMapping("students")
-    public List<Student> getStudents(){
-        return students;
+    public ResponseEntity<?> getStudents(){
+
+        return ResponseEntity.ok(
+                new CustomResponse("1",
+                        "Success",
+                        students
+                )
+        );
+
     }
     @PostMapping("students")
     public void addStudent(@RequestBody Student student) {
+
         students.add(student);
     }
-   @GetMapping("csrf-token")
-    public CsrfToken getToken(HttpServletRequest request)
-   {
-       return (CsrfToken) request.getAttribute("_csrf");
    }
-}
