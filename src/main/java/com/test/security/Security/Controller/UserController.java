@@ -1,8 +1,10 @@
 package com.test.security.Security.Controller;
 
+import com.test.security.Exceptions.DuplicateRecordException;
 import com.test.security.Security.Model.User;
 import com.test.security.Security.Service.UserServiceInterface;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -16,35 +18,15 @@ public class UserController {
         this.service = service;
     }
 
-//    @GetMapping
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<User> getAllUsers() {
-//        return userRepo.findAll();
-//    }
-
-//    @GetMapping("/{id}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public User getUserById(@PathVariable Integer id) {
-//        return userRepo.findById(id)
-//                .orElseThrow(() -> new RuntimeException("User not found"));
-//    }
-//
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@RequestBody User user) {
-        return service.save(user);
+    public ResponseEntity<User> createUser(@RequestBody User user)  {
+
+        User createdUser = null;
+
+            createdUser = service.save(user);
+
+        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
-//
-//    @PutMapping("/{id}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public User updateUser(@PathVariable Integer id, @RequestBody User user) {
-//        user.setId(id);
-//        return userRepo.save(user);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public void deleteUser(@PathVariable Integer id) {
-//        userRepo.deleteById(id);
-//    }
+
 }
