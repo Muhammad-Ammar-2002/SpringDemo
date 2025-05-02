@@ -1,9 +1,11 @@
 package com.test.security.Controller;
 
+import com.test.security.Exceptions.CustomResponse;
 import com.test.security.Model.CreateStudent;
 import com.test.security.Model.StudentDTO;
 import com.test.security.Service.StudentServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,29 +17,32 @@ public class StudentController {
     @Autowired
     private StudentServiceInterface studentService;
 
-    // Create a new student
     @PostMapping
-    public StudentDTO createStudent(@RequestBody CreateStudent student) {
-        return studentService.saveStudent(student);
+    public ResponseEntity<CustomResponse> createStudent(@RequestBody CreateStudent student) {
+        StudentDTO savedStudent = studentService.saveStudent(student);
+        return ResponseEntity.ok(new CustomResponse("201", "Student created successfully", savedStudent));
     }
 
-    // Get all students
     @GetMapping
-    public List<StudentDTO> getAllStudents() {
-        return studentService.getAllStudents();
+    public ResponseEntity<CustomResponse> getAllStudents() {
+        List<StudentDTO> students = studentService.getAllStudents();
+        return ResponseEntity.ok(new CustomResponse("200", "Students retrieved successfully", students));
     }
 
-    // Get a student by ID
+
     @GetMapping("/{id}")
-    public StudentDTO getStudentById(@PathVariable Integer id) {
-        return studentService.getStudentById(id);
+    public ResponseEntity<CustomResponse> getStudentById(@PathVariable Integer id) {
+        StudentDTO student = studentService.getStudentById(id);
+        return ResponseEntity.ok(new CustomResponse("200", "Student retrieved successfully", student));
     }
 
-    // Update a student
+
     @PutMapping("/{id}")
-    public StudentDTO updateStudent(@PathVariable Integer id, @RequestBody StudentDTO student) {
-        return studentService.updateStudent(id, student);
+    public ResponseEntity<CustomResponse> updateStudent(@PathVariable Integer id, @RequestBody StudentDTO student) {
+        StudentDTO updatedStudent = studentService.updateStudent(id, student);
+        return ResponseEntity.ok(new CustomResponse("200", "Student updated successfully", updatedStudent));
     }
+
 
     // Delete a student
     @DeleteMapping("/{id}")
