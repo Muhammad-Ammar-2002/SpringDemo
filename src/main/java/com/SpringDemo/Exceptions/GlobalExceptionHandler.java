@@ -19,4 +19,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         , HttpStatus.CONFLICT); // 409
     }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> handleException(Exception e){
+        return new ResponseEntity<>(
+                new CustomResponse("500","Internal Server Error",e.getMessage())
+        , HttpStatus.INTERNAL_SERVER_ERROR); // 500
+    }
+
 }
