@@ -1,7 +1,7 @@
-package com.test.security.Service;
+package com.SpringDemo.Service;
 
-import com.test.security.Model.CreateStudent;
-import com.test.security.Model.StudentDTO;
+import com.SpringDemo.Model.CreateStudent;
+import com.SpringDemo.Model.StudentDTO;
 
 import java.util.List;
 

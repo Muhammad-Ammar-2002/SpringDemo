@@ -1,4 +1,4 @@
-package com.test.security.Entity;
+package com.SpringDemo.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

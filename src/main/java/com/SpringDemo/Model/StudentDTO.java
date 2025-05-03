@@ -1,4 +1,4 @@
-package com.test.security.Model;
+package com.SpringDemo.Model;
 
 import lombok.*;
 

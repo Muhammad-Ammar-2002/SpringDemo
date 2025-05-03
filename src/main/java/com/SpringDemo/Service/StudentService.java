@@ -1,18 +1,18 @@
-package com.test.security.Service;
+package com.SpringDemo.Service;
 
-import com.test.security.Mapper.StudentMapper;
-import com.test.security.Model.CreateStudent;
-import com.test.security.Model.StudentDTO;
-import com.test.security.Entity.Student;
-import com.test.security.Repository.StudentRepo;
+import com.SpringDemo.Mapper.StudentMapper;
+import com.SpringDemo.Model.CreateStudent;
+import com.SpringDemo.Model.StudentDTO;
+import com.SpringDemo.Entity.Student;
+import com.SpringDemo.Repository.StudentRepo;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.test.security.Mapper.StudentMapper.mapToDTO;
-import static com.test.security.Mapper.StudentMapper.mapToEntity;
+import static com.SpringDemo.Mapper.StudentMapper.mapToDTO;
+import static com.SpringDemo.Mapper.StudentMapper.mapToEntity;
 
 
 @Service

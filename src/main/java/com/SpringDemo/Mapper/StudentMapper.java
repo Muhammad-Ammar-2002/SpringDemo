@@ -1,8 +1,8 @@
-package com.test.security.Mapper;
+package com.SpringDemo.Mapper;
 
-import com.test.security.Entity.Student;
-import com.test.security.Model.CreateStudent;
-import com.test.security.Model.StudentDTO;
+import com.SpringDemo.Entity.Student;
+import com.SpringDemo.Model.CreateStudent;
+import com.SpringDemo.Model.StudentDTO;
 import org.springframework.stereotype.Service;
 
 @Service

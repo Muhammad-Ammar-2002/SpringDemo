@@ -1,8 +1,8 @@
-package com.test.security.Controller;
+package com.SpringDemo.Controller;
 
-import com.test.security.Model.CreateStudent;
-import com.test.security.Model.StudentDTO;
-import com.test.security.Service.StudentServiceInterface;
+import com.SpringDemo.Model.CreateStudent;
+import com.SpringDemo.Model.StudentDTO;
+import com.SpringDemo.Service.StudentServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
