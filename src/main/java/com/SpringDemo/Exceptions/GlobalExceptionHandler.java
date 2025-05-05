@@ -26,4 +26,5 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         , HttpStatus.INTERNAL_SERVER_ERROR); // 500
     }
 
+
 }

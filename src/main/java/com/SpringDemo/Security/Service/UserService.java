@@ -13,7 +13,7 @@ public class UserService implements UserServiceInterface {
 
     private final UserRepo repo;
 
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
 
     @Override
     public User save(User user)  {
