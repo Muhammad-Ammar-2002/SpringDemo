@@ -22,24 +22,24 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class SecurityConfig {
 
 
-    private final UserDetailsService userDetailsService;
+//    private final UserDetailsService userDetailsService;
 
-    private final JwtFilter jwtFilter;
-
-    @Bean
-    public AuthenticationProvider authProvider(){
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(userDetailsService);
-        provider.setPasswordEncoder(new BCryptPasswordEncoder(12));
-
-        return provider;
-    }
-
-    private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
+//    private final JwtFilter jwtFilter;
+//
+//    @Bean
+//    public AuthenticationProvider authProvider(){
+//        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+//        provider.setUserDetailsService(userDetailsService);
+//        provider.setPasswordEncoder(new BCryptPasswordEncoder(12));
+//
+//        return provider;
+//    }
+//
+//    private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -50,16 +50,18 @@ public class SecurityConfig {
                         .permitAll()
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
-                .exceptionHandling(ex->ex.authenticationEntryPoint(customAuthenticationEntryPoint))
-                .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+//                .formLogin(Customizer.withDefaults())
+                .oauth2Login(Customizer.withDefaults())
+//                .exceptionHandling(ex->ex.authenticationEntryPoint(customAuthenticationEntryPoint))
+//                .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
-        return authConfig.getAuthenticationManager();
-    }
+//    @Bean
+//    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+//        return authConfig.getAuthenticationManager();
+//    }
 
 
 }
