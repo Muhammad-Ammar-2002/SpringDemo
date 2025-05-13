@@ -50,6 +50,7 @@ public class SecurityConfig {
                         .permitAll()
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
+                .formLogin(Customizer.withDefaults())
 //                .formLogin(Customizer.withDefaults())
                 .oauth2Login(Customizer.withDefaults())
 //                .exceptionHandling(ex->ex.authenticationEntryPoint(customAuthenticationEntryPoint))
